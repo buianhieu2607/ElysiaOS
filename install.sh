@@ -12,8 +12,7 @@ if [ -t 0 ]; then
     fi
 else
     # Force prompt by opening /dev/tty (the actual terminal)
-    if confirm=$(</dev/tty read -rp "Are you sure you want to run ElysiaOS installation (this will modify home directory folder before running make sure you backup important stuff or reading script)...? [y/N]: " confirm && echo "$confirm"); then
-        if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+    if confirm=$(</dev/tty read -rp "Are you sure you want to run ElysiaOS installation (this will modify home directory folder before running make sure you backup important stuff or reading script)...? [y/N]: " confirm && echo "$confirm"); then        if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
             echo "Aborted by user."
             exit 1
         fi
@@ -78,11 +77,11 @@ else
 fi
 
 # === Package Install Section ===
-echo "[+] Installing packages with yay..."
+echo "[+] Test packages..."
 
-PACKAGES=(
+PACKAGES="
   elysiaos-bar thunar hyprland starship
-  pamixer wlogout swww kitty btop fastfetch
+  pamixer wlogout swww awww kitty btop fastfetch
   hyprcursor hyprgraphics hypridle hyprland-qt-support
   hyprlock hyprpicker hyprutils hyprswitch
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
@@ -112,13 +111,32 @@ PACKAGES=(
   signet-workspaces-elysiaos sysinfo-elysiaos
   elysia-launcher elysia-downloader elysia-welcome-elysiaos
   elysia-widgets
-)
+"
 
-yay -Syyy --noconfirm --needed "${PACKAGES[@]}" || {
-  echo "[!] Conflict detected. Retrying with overwrite..."
-  yay -Syyy --noconfirm --needed --overwrite '*' "${PACKAGES[@]}"
-}
+VALID_PKGS=""
+for pkg in $PACKAGES; do
+  if pacman -Si "$pkg" &>/dev/null; then
+    VALID_PKGS="$VALID_PKGS $pkg"
+  else
+    echo "Skipping missing package: $pkg"
+  fi
+done
 
+echo "Result: $VALID_PKGS"
+echo "Please take note of the missing packages to install from the AUR or manually later."
+
+read -rp "Proceed with installation? [y/N]: " confirm
+
+if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+  echo "Aborted by user"
+  exit 1
+fi
+
+pacman -S --needed $VALID_PKGS
+
+echo "Floorp Browser installation skipped. Recommended to install via Flatpak."
+
+: << 'EOF'
 # === Install Floorp Browser ===
 echo "[+] Downloading Floorp browser..."
 
@@ -150,10 +168,11 @@ else
   exit 1
 fi
 
+
 # Clean up archive
 rm -f "$FLOORP_ARCHIVE"
 sudo ln -sf /opt/floorp/floorp /usr/bin/floorp
-
+EOF
 
 prompt_confirm() {
     local prompt="$1"
@@ -320,7 +339,7 @@ case $THEME_CHOICE in
 esac
 
 echo "[+] Setting theme to: $SELECTED_THEME"
-sudo plymouth-set-default-theme -R "$SELECTED_THEME"
+sudo plymouth-set-default-theme "$SELECTED_THEME"
 
 # === Ensure /etc/plymouth/plymouthd.conf is correct ===
 PLYMOUTH_CONF="/etc/plymouth/plymouthd.conf"
@@ -367,7 +386,8 @@ fi
 # 2. Enable SDDM as the display manager
 if ! systemctl is-enabled sddm &>/dev/null; then
     echo "[+] Enabling SDDM as default display manager..."
-    sudo systemctl enable sddm
+    sudo systemctl disable --now gdm lightdm lxdm slim ly 2>/dev/null
+    sudo systemctl enable --now --force sddm
 else
     echo "[✓] SDDM is already enabled."
 fi
@@ -426,6 +446,9 @@ sudo sed -i "s|^GRUB_CMDLINE_LINUX_DEFAULT=.*|$GRUB_CMDLINE|" "$GRUB_FILE"
 # === Regenerate grub.cfg ===
 echo "[+] Regenerating GRUB config..."
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# symlink binary awww to binary swww
+ln -sf $(which awww) ~/.local/bin/swww
 
 # === Cleanup: Remove unneeded setup files from home ===
 echo "[+] Cleaning up files from home directory..."
