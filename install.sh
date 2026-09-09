@@ -132,7 +132,7 @@ if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
   exit 1
 fi
 
-pacman -S --needed $VALID_PKGS
+sudo pacman -S --needed $VALID_PKGS
 
 echo "Floorp Browser installation skipped. Recommended to install via Flatpak."
 
