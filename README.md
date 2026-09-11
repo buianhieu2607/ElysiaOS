@@ -17,6 +17,7 @@
 <div align="center">
 
 # 🌸 ElysiaOS Release 4.0 🌸
+### THIS PROJECT HAS BEEN PAUSED FOR A WHILE DUE TO UNIVERSITY STUFF PLEASE KEEP THAT IN MIND
 ### KEEP IN MIND THIS REPO MIGHT NOT BE ALWAYS UP TO DATE, The OS Installation repos are ALWAYS UP TO DATE
 ### You can now Download the entire OS and install with the ISO, you have to turn off Secure boot to install, if you use VM make sure you have at least 3D Acceleration enabled or IGPU.
 ### ElysiaOS Mirrors Downloads
