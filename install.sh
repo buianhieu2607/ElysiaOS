@@ -386,8 +386,9 @@ fi
 # 2. Enable SDDM as the display manager
 if ! systemctl is-enabled sddm &>/dev/null; then
     echo "[+] Enabling SDDM as default display manager..."
-    sudo systemctl disable --now display-manager.service 2>/dev/null
-    sudo systemctl enable --now --force sddm
+    DM_SERVICE=$(basename "$(readlink -f /etc/systemd/system/display-manager.service)")
+    sudo systemctl disable "$DM_SERVICE" 2>/dev/null
+    sudo systemctl enable sddm
 else
     echo "[✓] SDDM is already enabled."
 fi
