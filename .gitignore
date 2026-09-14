@@ -20,6 +20,13 @@
 .config/session/
 .config/systemd/
 .config/yay/
+.config/alacritty/
+.config/cachyos/
+.config/fish/
+.config/gtk-3.0/
+.config/kdeconnect/
+.config/micro
+.config/xsettingsd/
 
 # Ignore unrelated configuration files
 .config/baloofilerc
@@ -49,7 +56,14 @@
 .config/Trolltech.conf
 .config/user-dirs.dirs
 .config/user-dirs.locale
-
+.config/arkrc
+.config/bluedevilglobalrc
+.config/cachyos-hello.json
+.config/dolphinrc
+.config/kcminputrc
+.config/libinput-gestures.conf
+.config/plasmanotifyrc
+.config/spectaclerc
 
 
 
