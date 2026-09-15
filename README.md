@@ -71,6 +71,8 @@
 > ~~Wallpapers in screenshots are not mine nor i'm affiliated with the artists and they are not provided with the OS.~~
 > 
 > I will try to find the credits for the wallpapers, some may already have the credits on one of the corners
+>
+> Seems like the rice author announced the next version. I will abandon this repository once it drops.
 
 > ~~Open Sourced Apps [ElysiaOS Apps](https://github.com/ElysiaOS) here~~
 
