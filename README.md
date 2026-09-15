@@ -67,7 +67,10 @@
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Installation</h2>
 
 > [!NOTE]
-> Wallpapers in screenshots are not mine nor i'm affiliated with the artists and they are not provided with the OS.
+> 
+> ~~Wallpapers in screenshots are not mine nor i'm affiliated with the artists and they are not provided with the OS.~~
+> 
+> I will try to find the credits for the wallpapers, some may already have the credits on one of the corners
 
 > ~~Open Sourced Apps [ElysiaOS Apps](https://github.com/ElysiaOS) here~~
 
@@ -90,7 +93,9 @@ https://elysiaos.vercel.app/sidebery-style.txt
 ```
 
 > Manual installation
+> 
 > I will put my script here. It will also overwrite some folders in the `/home` directory.
+> 
 > Please read the `install.sh` file before executing.
 
 ```
