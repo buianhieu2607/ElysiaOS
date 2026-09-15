@@ -2,30 +2,13 @@
 <a href="https://github.com/ElysiaOS/ElysiaOS">
   <img src="assets/cover.png">
   </a>
-  <a href="https://github.com/ElysiaOS/ElysiaOS">
-    <img src="https://img.shields.io/github/stars/ElysiaOS/ElysiaOS?style=for-the-badge&logo=github&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Stars">
-  <a href="https://github.com/ElysiaOS/ElysiaOS">
-    <img src="https://img.shields.io/github/last-commit/ElysiaOS/ElysiaOS?style=for-the-badge&logo=github&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Last-Commit">
-  <a href="https://github.com/ElysiaOS/ElysiaOS">
-    <img src="https://img.shields.io/github/repo-size/ElysiaOS/ElysiaOS?style=for-the-badge&logo=github&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Repo-Size">
-  <a href="https://discord/invite/tbRy63xdWD">
-    <img src="https://img.shields.io/discord/1398271551194792027?style=for-the-badge&logo=discord&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Discord">
-  <a href="https://ko-fi.com/matsuko3">
-    <img src="https://img.shields.io/badge/Support%20me%20on-Ko--fi-FF6433?style=for-the-badge&logo=kofi&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Ko-Fi">
 </p>
 
 <div align="center">
 
-# 🌸 ElysiaOS Release 4.0 🌸
-### THIS PROJECT HAS BEEN PAUSED FOR A WHILE DUE TO UNIVERSITY STUFF PLEASE KEEP THAT IN MIND
-### KEEP IN MIND THIS REPO MIGHT NOT BE ALWAYS UP TO DATE, The OS Installation repos are ALWAYS UP TO DATE
-### You can now Download the entire OS and install with the ISO, you have to turn off Secure boot to install, if you use VM make sure you have at least 3D Acceleration enabled or IGPU.
-### ElysiaOS Mirrors Downloads
-
-| TYPE | SourceForge Mirror | MEGA Mirror |
-|------|--------------------|-------------|
-| `ElysiaOS-Release` | [Download](https://sourceforge.net/projects/elysiaos) | [Download](https://mega.nz/folder/HRtmBRqJ#-Jl7usp300in-OeiFOGm2g) |
-| `ElysiaOS-Beta` | [Download](https://sourceforge.net/projects/elysiaos) |  [Download](https://mega.nz/folder/HRtmBRqJ#-Jl7usp300in-OeiFOGm2g) |
+# 🌸 ElysiaOS Release 🌸
+### THIS PROJECT IS A FORK AIMED TO FIX OUTDATED BINARIES AND SYNTAXES
+### Original repo: [ElysiaOS/ElysiaOS](https://github.com/ElysiaOS/ElysiaOS)
 
 <h2><sub><img src="assets/signet.png" alt="Elysia" width="25" height="25" /></sub> Elysia Theme</h2>
 <table align="center">
@@ -86,43 +69,48 @@
 > [!NOTE]
 > Wallpapers in screenshots are not mine nor i'm affiliated with the artists and they are not provided with the OS.
 
-> Open Sourced Apps [ElysiaOS Apps](https://github.com/ElysiaOS) here
+> ~~Open Sourced Apps [ElysiaOS Apps](https://github.com/ElysiaOS) here~~
 
 ### DOTFILES
 
-> [!TIP]
-> ONE CLICK DOTFILES INSTALLATION (keep in mind this will overrwrite some home directory please kindly read install.sh before executing anything!
+> Original installation script (This script is not my modified script, and will overwrite some folders in the `/home` directory.
+> Please read the `.sh` file before executing.
 
 ```bash
-curl -sSf https://www.elysiaos.live/eri.sh | bash
+curl -sSf https:/elysiaos.vercel.app/eri.sh | bash
 ```
 
 > SETTING UP FLOORP THEME
+> The Floorp browser installation is skipped in my script, I recommend install via Flatpak
 ```
 launch floorp first time to create config file for yourself
 copy the theme files from .floorp "chrome/" and "extentions/" into "/home/<uyoursername>/.floorp/<usersomething.default>" folder
 install Sidebery extention and use my style
-https://www.elysiaos.live/sidebery-style.txt
+https://elysiaos.vercel.app/sidebery-style.txt
 ```
 
-or 
+> Manual installation
+> I will put my script here. It will also overwrite some folders in the `/home` directory.
+> Please read the `install.sh` file before executing.
 
 ```
-git clone https://github.com/ElysiaOS/ElysiaOS
+git clone https://github.com/buianhieu2607/ElysiaOS
 cd ElysiaOS
 chmod +x install.sh
 ./install.sh
 ```
-### PACKAGES NEEDED 
-```
-yay -S --noconfirm thunar hyprland starship rofi discord krita google-chrome eww wlogout swww eww kitty kew btop fastfetch hyprcursor hyprgraphics hypridle hyprland-qt-support hyprlock hyprpicker hyprutils hyprswitch xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop swaylock-effects python python-cairo python-installer python-numpy python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5 python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm visual-studio-code-bin sublime-text-4 grim xclip wl-clipboard libnotify clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui gpu-screen-recorder-notification playerctl xkb-switch jq elysia-updater-elysiaos elysia-settings-elysiaos signet-workspaces-elysiaos elysia-welcome-elysiaos elysia-launcher sysinfo-elysiaos elysia-downloader elysiaos-bar elysia-widgets
-```
+### PACKAGES
+> Both the original and my script do installs the packages automatically. This is here in case some fails to install
 
 Make sure to add the elysiaos-repo to your pacman.conf before any installation
 ```
 [elysiaos-repo]
 SigLevel = Optional DatabaseOptional
 Server = https://raw.githubusercontent.com/ElysiaOS/$repo/refs/heads/main/$arch
+```
+Install the packages from the AUR:
+```
+yay -S --noconfirm thunar hyprland starship rofi discord krita google-chrome eww wlogout swww eww kitty kew btop fastfetch hyprcursor hyprgraphics hypridle hyprland-qt-support hyprlock hyprpicker hyprutils hyprswitch xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop swaylock-effects python python-cairo python-installer python-numpy python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5 python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm visual-studio-code-bin sublime-text-4 grim xclip wl-clipboard libnotify clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui gpu-screen-recorder-notification playerctl xkb-switch jq elysia-updater-elysiaos elysia-settings-elysiaos signet-workspaces-elysiaos elysia-welcome-elysiaos elysia-launcher sysinfo-elysiaos elysia-downloader elysiaos-bar elysia-widgets
 ```
 
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Keybindings</h2>
@@ -169,17 +157,17 @@ Server = https://raw.githubusercontent.com/ElysiaOS/$repo/refs/heads/main/$arch
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Details</h2>
 
 - **OS Based on**: Arch Linux
-- **SHELL**: zsh
+- **SHELL**: fish
 - **WM**: [Hyprland](https://github.com/hyprwm/Hyprland)
 - **Wallpaper**: [swww](https://github.com/LGFae/swww)
 - **Applications Launcher**: Elysia App Launcher
-- **Top Bar**: [My Own](https://github.com/ElysiaOS/elysiaos-bar)
-- **Widgets**: [My Own](https://github.com/ElysiaOS/elysiaos-widgets)
+- **Top Bar**: [Custom (`elysiaos-bar`)](https://github.com/ElysiaOS/elysiaos-bar)
+- **Widgets**: [Custom (`elysiaos-widgets`)](https://github.com/ElysiaOS/elysiaos-widgets)
 - **Notifications**: [Swaync](https://github.com/ErikReider/SwayNotificationCenter)
 - **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
-- **Theme**: `Use the themes in .themes`
-- **Icons**: `Use the icons in .icons`
-- **Cursors**: '[1st](https://ko-fi.com/s/58bc1bc84c) [2nd](https://www.pixiv.net/en/users/16588440) both in .icons'
+- **Theme**: Use the themes in `.themes`
+- **Icons**: Use the icons in `.icons`
+- **Cursors**: [1st](https://ko-fi.com/s/58bc1bc84c) [2nd](https://www.pixiv.net/en/users/16588440) both in `.icons`
 
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Roadmap & Future Updates</h2>
 
@@ -205,11 +193,10 @@ Server = https://raw.githubusercontent.com/ElysiaOS/$repo/refs/heads/main/$arch
 
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Special Thanks ♪</h2>
 
+- Original repository: [ElysiaOS/ElysiaOS](https://github.com/ElysiaOS/ElysiaOS)
 - [Some of the Folder icons](https://ko-fi.com/s/e3be105b94)
 - [Main Floorp theme idea](https://github.com/Shina-SG/Shina-Fox)
 - And Everyone else who tested and reported issues and bugs!!
-- Sponsors:
-Memory
-markun8633
+- Sponsors: None
 
 </div>
