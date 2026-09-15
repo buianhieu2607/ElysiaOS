@@ -448,8 +448,9 @@ sudo sed -i "s|^GRUB_CMDLINE_LINUX_DEFAULT=.*|$GRUB_CMDLINE|" "$GRUB_FILE"
 echo "[+] Regenerating GRUB config..."
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-# symlink binary awww to binary swww
-ln -sf $(which awww) ~/.local/bin/swww
+# === Install C++/JSON shared library version 26 ===
+echo "[+] Installing shared library libjsoncpp.so.26..."
+sudo bash ./install-jsoncpp26.sh
 
 # === Cleanup: Remove unneeded setup files from home ===
 echo "[+] Cleaning up files from home directory..."
