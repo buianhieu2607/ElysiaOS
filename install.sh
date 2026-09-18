@@ -96,7 +96,7 @@ PACKAGES="
   python-cairo python-installer python-numpy python-pillow python-pip
   python-psutil python-pyqt6 python-pyqt5 ttf-jetbrains-mono-nerd
   gpu-screen-recorder gpu-screen-recorder-ui gpu-screen-recorder-notification
-  python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm
+  python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip mkinitcpio python-tqdm
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
   pipewire-pulse ttf-jetbrains-mono granite
   qimgv sxiv granite7 libhandy python-pypresence
