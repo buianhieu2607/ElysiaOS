@@ -450,7 +450,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # === Install C++/JSON shared library version 26 ===
 echo "[+] Installing shared library libjsoncpp.so.26..."
-sudo bash ./install-jsoncpp26.sh
+sudo bash ./.config/install-jsoncpp26.sh
 
 # === Cleanup: Remove unneeded setup files from home ===
 echo "[+] Cleaning up files from home directory..."
