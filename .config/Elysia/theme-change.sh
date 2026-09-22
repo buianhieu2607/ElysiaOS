@@ -2,7 +2,7 @@
 
 SCRIPTS_DIR="$HOME/.config/Elysia"
 
-LIGHT_SCRIPT="$SCRIPTS_DIR/LightTheme.sh"
+LIGHT_SCRIPT="$SCRIPTS_DIR/ElysiaTheme.sh"
 DARK_SCRIPT="$SCRIPTS_DIR/DarkTheme.sh"
 CYRENE_SCRIPT="$SCRIPTS_DIR/CyreneTheme.sh"
 
