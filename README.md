@@ -68,7 +68,7 @@
 
 > [!NOTE]
 > 
-> ~~Wallpapers in screenshots are not mine nor i'm affiliated with the artists and they are not provided with the OS.~~
+> Wallpapers in screenshots are not mine nor i'm affiliated with the artists ~~and they are not provided with the OS.~~
 > 
 > I will try to find the credits for the wallpapers, some may already have the credits on one of the corners
 >
@@ -79,6 +79,7 @@
 ### DOTFILES
 
 > Original installation script (This script is not my modified script, and will overwrite some folders in the `/home` directory.
+> 
 > Please read the `.sh` file before executing.
 
 ```bash
@@ -86,6 +87,7 @@ curl -sSf https:/elysiaos.vercel.app/eri.sh | bash
 ```
 
 > SETTING UP FLOORP THEME
+> 
 > The Floorp browser installation is skipped in my script, I recommend install via Flatpak
 ```
 launch floorp first time to create config file for yourself
@@ -135,6 +137,7 @@ yay -S --noconfirm thunar hyprland starship rofi discord krita google-chrome eww
 | <kbd>Super</kbd> + <kbd>W</kbd> | Opens Elysia Notifaction Widget |
 | <kbd>Super</kbd> + <kbd>TAB</kbd> | Elysia Widget for system info |
 | <kbd>Super</kbd> + <kbd>SHIFT</kbd> + <kbd>W</kbd> | Launches Wallpapers menu |
+| <kbd>Super</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd> | Change the theme |
 | <kbd>Super</kbd> + <kbd>SHIFT</kbd> + <kbd>M</kbd> | Exit Hyprland alltogether |
 | <kbd>Super</kbd> + <kbd>V</kbd> | Toggle float a window |
 | <kbd>Super</kbd> + <kbd>D</kbd> | Launch text editor VSCODE |
