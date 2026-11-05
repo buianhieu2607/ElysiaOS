@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 # === Confirm with Y/N ===
 if [ -t 0 ]; then
@@ -80,10 +80,10 @@ fi
 echo "[+] Test packages..."
 
 PACKAGES="
-  elysiaos-bar thunar hyprland starship
-  pamixer wlogout swww awww kitty btop fastfetch
-  hyprcursor hyprgraphics hypridle hyprland-qt-support
-  hyprlock hyprpicker hyprutils hyprswitch
+  elysiaos-bar thunar starship
+  pamixer wlogout awww kitty btop fastfetch
+  hyprcursor hypridle hyprland-qt-support
+  hyprpicker hyprswitch
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
   xdg-desktop-portal xfce4-settings xfce4-taskmanager
   gsettings-desktop-schemas gsettings-system-schemas
@@ -133,6 +133,43 @@ if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
 fi
 
 sudo pacman -S --needed $VALID_PKGS
+
+# ============================================================
+# Hyprland 0.56.2 (pinned from Arch Linux Archive)
+# ============================================================
+
+install_hyprland_056() {
+  local packages=(
+    "https://archive.archlinux.org/packages/h/hyprland/hyprland-0.56.2-4-x86_64.pkg.tar.zst"
+    "https://archive.archlinux.org/packages/a/aquamarine/aquamarine-0.15.1-1-x86_64.pkg.tar.zst"
+    "https://archive.archlinux.org/packages/h/hyprgraphics/hyprgraphics-0.5.1-4-x86_64.pkg.tar.zst"
+    "https://archive.archlinux.org/packages/h/hyprtoolkit/hyprtoolkit-0.5.4-5-x86_64.pkg.tar.zst"
+    "https://archive.archlinux.org/packages/h/hyprland-guiutils/hyprland-guiutils-0.2.2-3-x86_64.pkg.tar.zst"
+    "https://archive.archlinux.org/packages/h/hyprlock/hyprlock-0.9.6-3-x86_64.pkg.tar.zst"
+  )
+
+  echo "==> Installing pinned Hyprland 0.56.2 stack..."
+  sudo pacman -U --needed --noconfirm "${packages[@]}"
+
+  # Lock them so normal -Syu never upgrades them
+  local ignore_list="hyprland aquamarine hyprgraphics hyprtoolkit hyprland-guiutils hyprlock"
+
+  if grep -qE '^\s*IgnorePkg\s*=' /etc/pacman.conf; then
+    # Only add the packages that are not already listed
+    for pkg in $ignore_list; do
+      if ! grep -qE "IgnorePkg\s*=.*\b${pkg}\b" /etc/pacman.conf; then
+        sudo sed -i "s/^\s*IgnorePkg\s*=.*/& ${pkg}/" /etc/pacman.conf
+      fi
+    done
+  else
+    sudo sed -i "/^\[options\]/a IgnorePkg = ${ignore_list}" /etc/pacman.conf
+  fi
+
+  echo "==> Hyprland 0.56.2 locked"
+}
+
+# Call it somewhere in your main flow
+install_hyprland_056
 
 echo "Floorp Browser installation skipped. Recommended to install via Flatpak."
 
